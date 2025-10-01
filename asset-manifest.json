@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/gostops-frontend-task/static/css/main.42eb2903.css",
+    "main.js": "/gostops-frontend-task/static/js/main.57b73e96.js",
+    "index.html": "/gostops-frontend-task/index.html",
+    "main.42eb2903.css.map": "/gostops-frontend-task/static/css/main.42eb2903.css.map",
+    "main.57b73e96.js.map": "/gostops-frontend-task/static/js/main.57b73e96.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.42eb2903.css",
+    "static/js/main.57b73e96.js"
+  ]
+}
