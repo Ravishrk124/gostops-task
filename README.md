@@ -63,25 +63,21 @@ npm start
 ## 4️⃣ Build for production**
 npm run build
 
-🌍 Deployment
+## 🌍 Deployment
 GitHub Pages
 Configured with gh-pages.
 npm run deploy
 Deployed at: https://ravishrk124.github.io/gostops-task
 
-Netlify
+## Netlify
 	•	Connect your GitHub repo on Netlify.
 	•	Build command → npm run build
 	•	Publish directory → build/
 
 ⸻
-
-👨‍💻 Author
+## 👨‍💻 Author
 
 Ravish Kumar
-	•	🔗 LinkedIn
-	•	💻 GitHub
-
+•🔗 LinkedIn - https://www.linkedin.com/in/ravish-kumar-08ba0524b/
 ⸻
-
 ⭐ If you like this project, don’t forget to star the repo!
