@@ -10,11 +10,11 @@ const Header = () => {
         <span className="logo-go">go</span><span className="logo-stops">STOPS</span>
       </div>
       <nav className="header-nav">
-        <a href="#" className="nav-link">Destinations ▾</a>
-        <a href="#" className="nav-link">Workation</a>
-        <a href="#" className="nav-link">Coliving</a>
-        <a href="#" className="nav-link">goSTOPS for Business ▾</a>
-        <a href="#" className="nav-link">Collaborate with Us ▾</a>
+        <span className="nav-link">Destinations ▾</span>
+        <span className="nav-link">Workation</span>
+        <span className="nav-link">Coliving</span>
+        <span className="nav-link">goSTOPS for Business ▾</span>
+        <span className="nav-link">Collaborate with Us ▾</span>
       </nav>
       <div className="header-actions">
         <button className="btn-download">Download App</button>

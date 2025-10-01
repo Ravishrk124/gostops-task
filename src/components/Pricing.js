@@ -14,8 +14,8 @@ const Pricing = ({ setSelectedRoom, setIncludeBreakfast, includeBreakfast, openG
       oldPrice: "₹959",
       price: "₹517.86",
       image: `${base}/Dormitory_1.jpg`,
-      imageCount: 2, // Corrected count
-      galleryTab: "dormitory", // Tab to open
+      imageCount: 2,
+      galleryTab: "dormitory",
     },
     {
       id: 2,
@@ -24,8 +24,8 @@ const Pricing = ({ setSelectedRoom, setIncludeBreakfast, includeBreakfast, openG
       oldPrice: "₹2637",
       price: "₹1423.98",
       image: `${base}/Private_1.jpg`,
-      imageCount: 2, // Corrected count
-      galleryTab: "private", // Tab to open
+      imageCount: 2,
+      galleryTab: "private",
     },
   ];
 
@@ -53,9 +53,11 @@ const Pricing = ({ setSelectedRoom, setIncludeBreakfast, includeBreakfast, openG
                 <span>Shared or Ensuite Bathroom</span>
                 <span>Air Conditioned</span>
               </div>
-              <a href="#" className="availability-link">
+
+              {/* ✅ Fixed anchor issue */}
+              <button type="button" className="availability-link">
                 Availability calendar
-              </a>
+              </button>
 
               {/* Breakfast Option */}
               <div className="breakfast-option">
