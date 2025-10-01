@@ -1,85 +1,95 @@
-// src/components/Gallery.js
+// src/components/Pricing.js
 
-import React, { useState } from "react";
-import "./Gallery.css";
+import React from "react";
+import "./Pricing.css";
 
-// Use PUBLIC_URL for robust pathing
-const base = process.env.PUBLIC_URL;
+const Pricing = ({ setSelectedRoom, setIncludeBreakfast, includeBreakfast, openGalleryToTab }) => {
+  const base = process.env.PUBLIC_URL + "/images";
 
-// Data for the image-based tabs
-const TABS = [
-  { id: 'all', label: 'All Images', image: `${base}/images/Exterior.webp` },
-  { id: 'dormitory', label: 'Dormitory', image: `${base}/images/Dormitory_1.jpg` },
-  { id: 'private', label: 'Private Rooms', image: `${base}/images/Private_1.jpg` },
-];
-
-const Modal = ({ setShowModal, startTab }) => {
-  const [activeTab, setActiveTab] = useState(startTab);
-  const [lightboxImg, setLightboxImg] = useState(null);
-
-  const images = {
-    all: [
-      `${base}/images/Exterior.webp`, `${base}/images/Reception.webp`, `${base}/images/CommonArea_1.webp`,
-      `${base}/images/CommonArea_2.webp`, `${base}/images/CommonArea_3.webp`, `${base}/images/Dormitory_1.jpg`,
-      `${base}/images/Dormitory_2.jpg`, `${base}/images/Private_1.jpg`, `${base}/images/Private_2.jpg`,
-    ],
-    dormitory: [`${base}/images/Dormitory_1.jpg`, `${base}/images/Dormitory_2.jpg`],
-    private: [`${base}/images/Private_1.jpg`, `${base}/images/Private_2.jpg`],
-  };
+  const rooms = [
+    {
+      id: 1,
+      name: "Bed in 4 Bed Mixed AC Dormitory Room",
+      occupancy: "x 1 Adult",
+      oldPrice: "₹959",
+      price: "₹517.86",
+      image: `${base}/Dormitory_1.jpg`,
+      imageCount: 2, // Corrected count
+      galleryTab: "dormitory", // Tab to open
+    },
+    {
+      id: 2,
+      name: "Deluxe Private AC Room with Ensuite Bathroom",
+      occupancy: "x 2 Adults",
+      oldPrice: "₹2637",
+      price: "₹1423.98",
+      image: `${base}/Private_1.jpg`,
+      imageCount: 2, // Corrected count
+      galleryTab: "private", // Tab to open
+    },
+  ];
 
   return (
-    <>
-      <div className="modal">
-        <span className="close" onClick={() => setShowModal(false)}>&times;</span>
-        <div className="modal-content-wrapper">
-          <div className="gallery-tabs">
-            {TABS.map(tab => (
-              <button key={tab.id} className={`tab-btn ${activeTab === tab.id ? 'active' : ''}`} onClick={() => setActiveTab(tab.id)}>
-                <img src={tab.image} alt={tab.label} className="tab-image" loading="lazy" />
-                <span className="tab-label">{tab.label}</span>
+    <div className="pricing-section">
+      <h2 className="section-title">Room types & Pricing</h2>
+      {rooms.map((room) => (
+        <div key={room.id} className="room-card">
+          {/* Room Image */}
+          <div
+            className="room-image-container"
+            onClick={() => openGalleryToTab(room.galleryTab)}
+          >
+            <img src={room.image} alt={room.name} className="room-image" />
+            <span className="image-counter">1/{room.imageCount}</span>
+          </div>
+
+          {/* Room Info */}
+          <div className="room-content-wrapper">
+            <div className="room-details">
+              <h3 className="room-name">{room.name}</h3>
+              <p className="room-occupancy">👤 {room.occupancy}</p>
+              <div className="room-features">
+                <span>Laundry (Subject to Availability)</span>
+                <span>Shared or Ensuite Bathroom</span>
+                <span>Air Conditioned</span>
+              </div>
+              <a href="#" className="availability-link">
+                Availability calendar
+              </a>
+
+              {/* Breakfast Option */}
+              <div className="breakfast-option">
+                <input
+                  type="checkbox"
+                  id={`breakfast-${room.id}`}
+                  checked={includeBreakfast}
+                  onChange={(e) => setIncludeBreakfast(e.target.checked)}
+                />
+                <label htmlFor={`breakfast-${room.id}`}>
+                  Include Breakfast (+ ₹150)
+                </label>
+              </div>
+            </div>
+
+            {/* Pricing */}
+            <div className="room-pricing">
+              <div className="price-wrapper">
+                <span className="old-price">{room.oldPrice}</span>
+                <span className="current-price">{room.price}</span>
+                <span className="price-note">/night</span>
+              </div>
+              <button
+                onClick={() => setSelectedRoom(room)}
+                className="add-room-btn"
+              >
+                Add Room
               </button>
-            ))}
-          </div>
-          <div className="modal-content">
-            {images[activeTab].map((img, index) => (
-              <img key={index} src={img} alt={`Gallery ${index}`} onClick={() => setLightboxImg(img)} loading="lazy" />
-            ))}
+            </div>
           </div>
         </div>
-      </div>
-      {lightboxImg && (
-        <div className="lightbox" onClick={() => setLightboxImg(null)}>
-          <img src={lightboxImg} alt="Full view" loading="lazy" />
-        </div>
-      )}
-    </>
-  );
-};
-
-const Gallery = ({ setShowModal, setStartTab }) => {
-  const handleOpenGallery = () => {
-    setStartTab('all');
-    setShowModal(true);
-  };
-
-  return (
-    <div className="gallery-wrapper"> 
-      <div className="gallery-container">
-        <div className="gallery-main"><img src={`${base}/images/Exterior.webp`} alt="Main Hostel" loading="lazy" /></div>
-        <div className="gallery-side">
-          <img src={`${base}/images/Reception.webp`} alt="Reception" loading="lazy" />
-          <img src={`${base}/images/CommonArea_1.webp`} alt="Common Area" loading="lazy" />
-          <img src={`${base}/images/CommonArea_2.webp`} alt="Dining Area" loading="lazy" />
-          <img src={`${base}/images/CommonArea_3.webp`} alt="Lounge" loading="lazy" />
-        </div>
-      </div>
-      <button className="gallery-btn" onClick={handleOpenGallery}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8v8H3V3zm0 10h8v8H3v-8zM13 3h8v8h-8V3zm0 10h8v8h-8v-8z"/></svg>
-        Gallery
-      </button>
+      ))}
     </div>
   );
 };
 
-Gallery.Modal = Modal;
-export default Gallery;
+export default Pricing;
