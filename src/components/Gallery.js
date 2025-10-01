@@ -1,88 +1,82 @@
 // src/components/Gallery.js
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Gallery.css";
 
-const Gallery = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [activeTab, setActiveTab] = useState("all");
+// Data for the new image-based tabs
+const TABS = [
+  { id: 'all', label: 'All Images', image: '/images/Exterior.webp' },
+  { id: 'dormitory', label: 'Dormitory', image: '/images/Dormitory_1.jpg' },
+  { id: 'private', label: 'Private Rooms', image: '/images/Private_1.jpg' },
+];
+
+const Modal = ({ setShowModal, startTab }) => {
+  const [activeTab, setActiveTab] = useState(startTab);
   const [lightboxImg, setLightboxImg] = useState(null);
 
-  // ✅ Fix: Use PUBLIC_URL for GitHub Pages
-  const base = process.env.PUBLIC_URL + "/images";
-
   const images = {
-    all: [
-      `${base}/Exterior.webp`,
-      `${base}/Reception.webp`,
-      `${base}/CommonArea_1.webp`,
-      `${base}/CommonArea_2.webp`,
-      `${base}/CommonArea_3.webp`,
-      `${base}/Dormitory_1.jpg`,
-      `${base}/Dormitory_2.jpg`,
-      `${base}/Private_1.jpg`,
-      `${base}/Private_2.jpg`,
-    ],
-    dormitory: [`${base}/Dormitory_1.jpg`, `${base}/Dormitory_2.jpg`],
-    private: [`${base}/Private_1.jpg`, `${base}/Private_2.jpg`],
+    all: ["/images/Exterior.webp", "/images/Reception.webp", "/images/CommonArea_1.webp", "/images/CommonArea_2.webp", "/images/CommonArea_3.webp", "/images/Dormitory_1.jpg", "/images/Dormitory_2.jpg", "/images/Private_1.jpg", "/images/Private_2.jpg"],
+    dormitory: ["/images/Dormitory_1.jpg", "/images/Dormitory_2.jpg"],
+    private: ["/images/Private_1.jpg", "/images/Private_2.jpg"],
   };
 
   return (
-    <div className="gallery-wrapper">
-      {/* Main + Side Images */}
-      <div className="gallery-container">
-        <div className="gallery-main">
-          <img src={`${base}/Exterior.webp`} alt="Main Hostel" />
-        </div>
-        <div className="gallery-side">
-          <img src={`${base}/Reception.webp`} alt="Reception" />
-          <img src={`${base}/CommonArea_1.webp`} alt="Common Area" />
-          <img src={`${base}/CommonArea_2.webp`} alt="Dining Area" />
-          <img src={`${base}/CommonArea_3.webp`} alt="Lounge" />
-        </div>
-      </div>
-
-      {/* Gallery Button */}
-      <button className="gallery-btn" onClick={() => setShowModal(true)}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.9 13.11l2.1 2.58 3.1-3.88 4 5.19H6l2.9-3.89z"/>
-        </svg>
-        Gallery
-      </button>
-
-      {/* Modal */}
-      {showModal && (
-        <div className="modal">
-          <span className="close" onClick={() => setShowModal(false)}>
-            &times;
-          </span>
+    <>
+      <div className="modal">
+        <span className="close" onClick={() => setShowModal(false)}>&times;</span>
+        <div className="modal-content-wrapper">
           <div className="gallery-tabs">
-            <button className={activeTab === "all" ? "active" : ""} onClick={() => setActiveTab("all")}>
-              All Images
-            </button>
-            <button className={activeTab === "dormitory" ? "active" : ""} onClick={() => setActiveTab("dormitory")}>
-              Dormitory
-            </button>
-            <button className={activeTab === "private" ? "active" : ""} onClick={() => setActiveTab("private")}>
-              Private Rooms
-            </button>
+            {TABS.map(tab => (
+              <button 
+                key={tab.id}
+                className={`tab-btn ${activeTab === tab.id ? 'active' : ''}`} 
+                onClick={() => setActiveTab(tab.id)}
+              >
+                <img src={tab.image} alt={tab.label} className="tab-image" loading="lazy" />
+                <span className="tab-label">{tab.label}</span>
+              </button>
+            ))}
           </div>
           <div className="modal-content">
             {images[activeTab].map((img, index) => (
-              <img key={index} src={img} alt={`Gallery ${index}`} onClick={() => setLightboxImg(img)} />
+              <img key={index} src={img} alt={`Gallery ${index}`} onClick={() => setLightboxImg(img)} loading="lazy" />
             ))}
           </div>
         </div>
-      )}
-
-      {/* Lightbox */}
+      </div>
       {lightboxImg && (
         <div className="lightbox" onClick={() => setLightboxImg(null)}>
-          <img src={lightboxImg} alt="Full view" />
+          <img src={lightboxImg} alt="Full view" loading="lazy" />
         </div>
       )}
+    </>
+  );
+};
+
+const Gallery = ({ setShowModal, setStartTab }) => {
+  const handleOpenGallery = () => {
+    setStartTab('all');
+    setShowModal(true);
+  };
+
+  return (
+    <div className="gallery-wrapper"> 
+      <div className="gallery-container">
+        <div className="gallery-main"><img src="/images/Exterior.webp" alt="Main Hostel" loading="lazy" /></div>
+        <div className="gallery-side">
+          <img src="/images/Reception.webp" alt="Reception" loading="lazy" />
+          <img src="/images/CommonArea_1.webp" alt="Common Area" loading="lazy" />
+          <img src="/images/CommonArea_2.webp" alt="Dining Area" loading="lazy" />
+          <img src="/images/CommonArea_3.webp" alt="Lounge" loading="lazy" />
+        </div>
+      </div>
+      <button className="gallery-btn" onClick={handleOpenGallery}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8v8H3V3zm0 10h8v8H3v-8zM13 3h8v8h-8V3zm0 10h8v8h-8v-8z"/></svg>
+        Gallery
+      </button>
     </div>
   );
 };
 
+Gallery.Modal = Modal;
 export default Gallery;
