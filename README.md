@@ -1,70 +1,122 @@
-# Getting Started with Create React App
+Got it 🚀 Let’s make a professional README.md for your GitHub repo gostops-task.
+This will make it look polished and also guide anyone (like recruiters) to understand, run, and deploy your project.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+⸻
 
-## Available Scripts
+📄 README.md
 
-In the project directory, you can run:
+# goSTOPS Frontend Task 🏨
 
-### `npm start`
+A React-based frontend project built as part of the **goSTOPS frontend intern task**.  
+The app replicates the **goSTOPS property page**, including:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 📸 **Gallery with Modal & Tabs (All, Dormitory, Private Rooms)**
+- 🏷️ **Property Information** (title, address, description, pricing, etc.)
+- 🛏️ **Room Types & Pricing Cards**
+- 🎯 **Amenities Section**
+- 💰 **Booking Summary Panel**
+- 📱 Fully responsive design
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🚀 Live Demo
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Netlify Deployment:** [https://gostops.netlify.app](https://gostops.netlify.app)  
+- **GitHub Pages (Backup):** [https://ravishrk124.github.io/gostops-task](https://ravishrk124.github.io/gostops-task)
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📂 Project Structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+gostops-task/
+│
+├── public/
+│   ├── images/         # Property images (Dormitory, Private, Common areas)
+│   └── index.html
+│
+├── src/
+│   ├── components/     # Reusable React components
+│   │   ├── Gallery.js
+│   │   ├── PropertyInfo.js
+│   │   ├── Pricing.js
+│   │   ├── Amenities.js
+│   │   ├── Summary.js
+│   │   └── Header.js
+│   │
+│   ├── App.js          # Main layout
+│   ├── App.css         # Global styles
+│   └── index.js        # React entry point
+│
+├── package.json
+└── README.md
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## ⚙️ Tech Stack
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **React 19** (with CRA – Create React App)
+- **CSS3** (custom responsive styling)
+- **Netlify / GitHub Pages** for deployment
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🖥️ Getting Started
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 1️⃣ Clone the repo
+```bash
+git clone https://github.com/Ravishrk124/gostops-task.git
+cd gostops-task
 
-## Learn More
+2️⃣ Install dependencies
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+npm install
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3️⃣ Run locally
 
-### Code Splitting
+npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+App will start at http://localhost:3000
 
-### Analyzing the Bundle Size
+4️⃣ Build for production
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+npm run build
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+⸻
 
-### Advanced Configuration
+🌍 Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+GitHub Pages
 
-### Deployment
+Configured with gh-pages.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+npm run deploy
 
-### `npm run build` fails to minify
+Deployed at: https://ravishrk124.github.io/gostops-task
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Netlify
+	•	Just connect your GitHub repo on Netlify.
+	•	Set build command → npm run build
+	•	Publish directory → build/
+
+⸻
+
+📸 Screenshots
+
+Property Page Preview
+
+Gallery Modal
+
+⸻
+
+👨‍💻 Author
+
+Ravish Kumar
+	•	🔗 LinkedIn
+	•	💻 GitHub
+
+⸻
+
+⭐ If you like this project, don’t forget to star the repo!
+
+---
