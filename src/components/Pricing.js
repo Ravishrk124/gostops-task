@@ -4,6 +4,8 @@ import React from "react";
 import "./Pricing.css";
 
 const Pricing = ({ setSelectedRoom, setIncludeBreakfast, includeBreakfast, openGalleryToTab }) => {
+  const base = process.env.PUBLIC_URL + "/images";
+
   const rooms = [
     {
       id: 1,
@@ -11,9 +13,9 @@ const Pricing = ({ setSelectedRoom, setIncludeBreakfast, includeBreakfast, openG
       occupancy: "x 1 Adult",
       oldPrice: "₹959",
       price: "₹517.86",
-      image: "/images/Dormitory_1.jpg",
+      image: `${base}/Dormitory_1.jpg`,
       imageCount: 2, // Corrected count
-      galleryTab: 'dormitory', // Tab to open
+      galleryTab: "dormitory", // Tab to open
     },
     {
       id: 2,
@@ -21,9 +23,9 @@ const Pricing = ({ setSelectedRoom, setIncludeBreakfast, includeBreakfast, openG
       occupancy: "x 2 Adults",
       oldPrice: "₹2637",
       price: "₹1423.98",
-      image: "/images/Private_1.jpg",
+      image: `${base}/Private_1.jpg`,
       imageCount: 2, // Corrected count
-      galleryTab: 'private', // Tab to open
+      galleryTab: "private", // Tab to open
     },
   ];
 
@@ -32,11 +34,16 @@ const Pricing = ({ setSelectedRoom, setIncludeBreakfast, includeBreakfast, openG
       <h2 className="section-title">Room types & Pricing</h2>
       {rooms.map((room) => (
         <div key={room.id} className="room-card">
-          <div className="room-image-container" onClick={() => openGalleryToTab(room.galleryTab)}>
+          {/* Room Image */}
+          <div
+            className="room-image-container"
+            onClick={() => openGalleryToTab(room.galleryTab)}
+          >
             <img src={room.image} alt={room.name} className="room-image" />
             <span className="image-counter">1/{room.imageCount}</span>
           </div>
 
+          {/* Room Info */}
           <div className="room-content-wrapper">
             <div className="room-details">
               <h3 className="room-name">{room.name}</h3>
@@ -46,24 +53,35 @@ const Pricing = ({ setSelectedRoom, setIncludeBreakfast, includeBreakfast, openG
                 <span>Shared or Ensuite Bathroom</span>
                 <span>Air Conditioned</span>
               </div>
-              <a href="#" className="availability-link">Availability calendar</a>
+              <a href="#" className="availability-link">
+                Availability calendar
+              </a>
+
+              {/* Breakfast Option */}
               <div className="breakfast-option">
-                <input 
-                  type="checkbox" 
+                <input
+                  type="checkbox"
                   id={`breakfast-${room.id}`}
                   checked={includeBreakfast}
                   onChange={(e) => setIncludeBreakfast(e.target.checked)}
                 />
-                <label htmlFor={`breakfast-${room.id}`}>Include Breakfast (+ ₹150)</label>
+                <label htmlFor={`breakfast-${room.id}`}>
+                  Include Breakfast (+ ₹150)
+                </label>
               </div>
             </div>
+
+            {/* Pricing */}
             <div className="room-pricing">
               <div className="price-wrapper">
                 <span className="old-price">{room.oldPrice}</span>
                 <span className="current-price">{room.price}</span>
                 <span className="price-note">/night</span>
               </div>
-              <button onClick={() => setSelectedRoom(room)} className="add-room-btn">
+              <button
+                onClick={() => setSelectedRoom(room)}
+                className="add-room-btn"
+              >
                 Add Room
               </button>
             </div>
