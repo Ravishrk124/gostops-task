@@ -2,158 +2,70 @@
 
 /* --- Main Gallery Section --- */
 .gallery-wrapper {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  border-radius: 16px;
-  overflow: hidden;
+  position: relative; height: 100%; width: 100%;
+  border-radius: 16px; overflow: hidden;
 }
-
 .gallery-container {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 16px;
-  height: 100%;
+  display: grid; grid-template-columns: 2fr 1fr; gap: 16px; height: 100%;
 }
-
-.gallery-main img,
-.gallery-side img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
+.gallery-main img, .gallery-side img { width: 100%; height: 100%; object-fit: cover; }
 .gallery-side {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 12px;
-  height: 100%;
+  display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+  gap: 12px; height: 100%;
 }
-
-/* --- Gallery Button --- */
 .gallery-btn {
-  position: absolute;
-  bottom: 12px;
-  right: 12px;
-  background: rgba(255, 255, 255, 0.95);
-  border: none;
-  padding: 6px 14px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  color: #212121;
-  display: flex;
-  align-items: center;
-  gap: 8px; /* Increased gap */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  z-index: 10;
-  transition: background 0.2s ease;
-  font-family: 'Poppins', sans-serif;
+  position: absolute; bottom: 12px; right: 12px; background: rgba(255, 255, 255, 0.95);
+  border: none; padding: 6px 14px; border-radius: 20px; cursor: pointer;
+  font-size: 14px; font-weight: 600; color: #212121; display: flex;
+  align-items: center; gap: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10; transition: background 0.2s ease; font-family: 'Poppins', sans-serif;
 }
-
-.gallery-btn:hover {
-  background: white;
-}
-
-.gallery-btn svg {
-  width: 16px; /* Sized for new icon */
-  height: 16px;
-  fill: #444;
-}
-
+.gallery-btn:hover { background: white; }
+.gallery-btn svg { width: 16px; height: 16px; fill: #444; }
 
 /* --- Modal (Fullscreen Gallery) --- */
 .modal {
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  box-sizing: border-box;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
+  padding: 20px; box-sizing: border-box; background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  /* ✅ REMOVED flexbox centering from here */
 }
 
-/* ✅ This wrapper is now TRANSPARENT */
+/* ✅ This wrapper is now TRANSPARENT and positioned differently */
 .modal-content-wrapper {
-  background: transparent; /* No more white background */
-  padding: 0;
-  max-width: 1200px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-  /* No box-shadow as it's transparent */
+  /* ✅ NEW Centering Technique */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background: transparent; padding: 0; max-width: 1200px; width: 90%; /* Use % width for responsiveness */
+  max-height: 90vh; overflow-y: auto;
 }
 
-/* ✅ Repositioned close button */
 .close {
-  position: fixed; /* Fixed to the viewport corner */
-  top: 20px;
-  right: 30px;
-  color: #f1f1f1; /* Light color for dark background */
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-  z-index: 1001; /* Above the modal content */
+  position: fixed; top: 20px; right: 30px; color: #f1f1f1; font-size: 40px;
+  font-weight: bold; cursor: pointer; z-index: 1001;
 }
 
 /* --- Gallery Tabs --- */
 .gallery-tabs {
-  margin-bottom: 24px;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
+  margin-bottom: 24px; display: flex; justify-content: center; gap: 12px;
 }
-
-/* ✅ Updated tab style for transparent background */
 .gallery-tabs button {
-  background-color: rgba(0, 0, 0, 0.3); /* Dark transparent background */
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 10px 20px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  background-color: rgba(0, 0, 0, 0.3); color: white; border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 20px; border-radius: 20px; cursor: pointer; font-size: 15px;
+  font-weight: 500; transition: all 0.2s ease;
 }
-
-.gallery-tabs button.active {
-  background-color: var(--primary-pink);
-  border-color: var(--primary-pink);
-}
-
-.gallery-tabs button:hover:not(.active) {
-  background-color: rgba(0, 0, 0, 0.5);
-}
+.gallery-tabs button.active { background-color: var(--primary-pink); border-color: var(--primary-pink); }
+.gallery-tabs button:hover:not(.active) { background-color: rgba(0, 0, 0, 0.5); }
 
 /* --- Modal Image Grid --- */
 .modal-content {
-  display: grid;
-  gap: 10px;
-  width: 100%;
-  /* ✅ FIXED AREA: This ensures the container doesn't shrink */
-  min-height: 420px; 
-  align-content: start; /* Prevents rows from stretching */
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  display: grid; gap: 10px; width: 100%; min-height: 420px; 
+  align-content: start; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
-
-.modal-content img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-  cursor: pointer;
-}
+.modal-content img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; cursor: pointer; }
 
 /* --- Lightbox --- */
 .lightbox {
