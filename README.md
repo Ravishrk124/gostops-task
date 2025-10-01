@@ -52,15 +52,14 @@ gostops-task/
 
 ## 🖥️ Getting Started
 ### 1️⃣ Clone the repo
-
 git clone https://github.com/Ravishrk124/gostops-task.git
 cd gostops-task
 ## 2️⃣ Install dependencies
 npm install
-## 3️⃣ Run locally**
+## 3️⃣ Run locally
 npm start
 ->App will start at http://localhost:3000
-## 4️⃣ Build for production**
+## 4️⃣ Build for production
 npm run build
 
 ## 🌍 Deployment
