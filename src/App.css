@@ -1,38 +1,97 @@
+/* src/App.css */
+
 .App {
-  text-align: center;
+  background-color: white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main-content {
+  max-width: 1360px;
+  margin: auto;
+  padding: 24px;
+  position: relative;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.popular-pill {
+  position: absolute;
+  top: 12px;
+  left: 36px;
+  background-color: #ffdd00;
+  color: var(--text-dark);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  z-index: 10;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.card {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  margin-bottom: 24px;
+}
+
+.gallery-card {
+  padding: 0;
+  height: 500px; /* ✅ Increased from 450px to show more of the image */
+}
+
+.info-card {
+  padding: 24px;
+}
+
+.content-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 32px;
+  align-items: flex-start;
 }
 
-.App-link {
-  color: #61dafb;
+.details-column {
+  flex: 2;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.summary-column {
+  flex: 1;
+  position: sticky;
+  top: 100px;
+}
+
+.booking-details {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  margin-bottom: 16px;
+  background-color: white;
+}
+
+@media (max-width: 900px) {
+  .content-container {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+  .summary-column {
+    position: static;
+    width: 100%;
   }
+}
+
+button, .card {
+  transition: all 0.2s ease-in-out;
+}
+
+.room-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.summary-card {
+  animation: fadeIn 0.4s ease-in-out;
 }

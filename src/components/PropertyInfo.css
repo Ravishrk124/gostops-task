@@ -1,0 +1,93 @@
+/* src/components/PropertyInfo.css */
+
+.property-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.info-left {
+  flex: 2.5;
+}
+
+.property-title { font-size: 28px; font-weight: 800; margin: 0 0 12px 0; }
+.address { margin-bottom: 20px; color: var(--text-medium); font-size: 15px; }
+.pill-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+.pill {
+  background: var(--pill-bg);
+  color: var(--pill-text);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.desc { color: var(--text-light); line-height: 1.6; font-size: 15px; margin: 0; }
+
+/* ✅ --- High-Impact Booking Widget --- */
+
+.info-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Center align all content */
+  text-align: center;
+  
+  background-color: #fff8fa; /* Very light pink background */
+  border: 1px solid #ffe0e9; /* Light pink border */
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.price-label {
+  font-size: 15px;
+  color: var(--text-light);
+  margin-bottom: 4px;
+}
+
+.price-value {
+  font-weight: 800;
+  font-size: 32px;
+  margin: 0 0 8px 0; /* Reduced margin */
+  color: var(--text-dark);
+}
+
+.urgency-text {
+  color: var(--primary-pink);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.cta-button {
+  background: var(--primary-pink);
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 4px 14px rgba(255, 59, 108, 0.35);
+
+  /* ✅ Pulse Animation */
+  animation: pulse 2s infinite;
+}
+
+/* ✅ Keyframes for the pulse animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 4px 14px rgba(255, 59, 108, 0.35);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 6px 20px rgba(255, 59, 108, 0.5);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 14px rgba(255, 59, 108, 0.35);
+  }
+}
