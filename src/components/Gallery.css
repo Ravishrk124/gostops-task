@@ -26,43 +26,39 @@
 /* --- Modal (Fullscreen Gallery) --- */
 .modal {
   position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
-  display: flex; justify-content: center; align-items: center; padding: 20px;
-  box-sizing: border-box; background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px; box-sizing: border-box; background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  /* ✅ REMOVED flexbox centering from here */
 }
+
+/* ✅ This wrapper is now TRANSPARENT and positioned differently */
 .modal-content-wrapper {
-  background: transparent; padding: 0; max-width: 1200px; width: 100%;
-  max-height: 90vh; overflow-y: auto; position: relative;
+  /* ✅ NEW Centering Technique */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background: transparent; padding: 0; max-width: 1200px; width: 90%; /* Use % width for responsiveness */
+  max-height: 90vh; overflow-y: auto;
 }
+
 .close {
   position: fixed; top: 20px; right: 30px; color: #f1f1f1; font-size: 40px;
   font-weight: bold; cursor: pointer; z-index: 1001;
 }
 
-/* --- ✅ New Image-Based Gallery Tabs --- */
+/* --- Gallery Tabs --- */
 .gallery-tabs {
-  margin-bottom: 24px; display: flex; justify-content: center; gap: 16px;
+  margin-bottom: 24px; display: flex; justify-content: center; gap: 12px;
 }
-.tab-btn {
-  background: transparent; border: 2px solid rgba(255, 255, 255, 0.4);
-  border-radius: 12px; padding: 0; cursor: pointer;
-  overflow: hidden; text-align: center; color: white;
-  transition: all 0.2s ease;
+.gallery-tabs button {
+  background-color: rgba(0, 0, 0, 0.3); color: white; border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px 20px; border-radius: 20px; cursor: pointer; font-size: 15px;
+  font-weight: 500; transition: all 0.2s ease;
 }
-.tab-btn:hover {
-  border-color: white;
-}
-.tab-btn.active {
-  border-color: var(--primary-pink);
-  box-shadow: 0 0 10px var(--primary-pink);
-}
-.tab-image {
-  width: 160px; height: 100px; object-fit: cover; display: block;
-}
-.tab-label {
-  font-weight: 600; padding: 8px; display: block;
-  background-color: rgba(0, 0, 0, 0.4);
-}
+.gallery-tabs button.active { background-color: var(--primary-pink); border-color: var(--primary-pink); }
+.gallery-tabs button:hover:not(.active) { background-color: rgba(0, 0, 0, 0.5); }
 
 /* --- Modal Image Grid --- */
 .modal-content {
