@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/gostops-task/static/css/main.6ac111f8.css",
+    "main.css": "/gostops-task/static/css/main.58ea7588.css",
     "main.js": "/gostops-task/static/js/main.3912b949.js",
     "index.html": "/gostops-task/index.html",
-    "main.6ac111f8.css.map": "/gostops-task/static/css/main.6ac111f8.css.map",
+    "main.58ea7588.css.map": "/gostops-task/static/css/main.58ea7588.css.map",
     "main.3912b949.js.map": "/gostops-task/static/js/main.3912b949.js.map"
   },
   "entrypoints": [
-    "static/css/main.6ac111f8.css",
+    "static/css/main.58ea7588.css",
     "static/js/main.3912b949.js"
   ]
 }
